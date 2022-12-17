@@ -1,0 +1,54 @@
+    <div class="mf-app-component">
+          <router-outlet></router-outlet>
+        Hello world!
+    <br />
+    {{ myProperty.length }}
+    <div>
+        <div>Daniil</div>
+        <div [innerText] = "myProperty"></div>
+    </div>
+    <div [innerHTML] = "htmlProperty"></div>
+
+    <div (click) = "onClickMeClick()">Click on me!!!</div>
+    <br />
+    <mf-generic-multiselect 
+        [options]="layoutOptions"
+        [layout]="Layout.Horizontal"
+        [(value)]="selectedPersonLayout"
+        >
+    </mf-generic-multiselect>
+
+    <br />
+    <mf-generic-multiselect
+        [options]="personOptions"
+        [layout]="selectedPersonLayout"
+        [isMultiselect]="false"
+        [(value)]="selectedPerson"
+        >
+    </mf-generic-multiselect>
+    <br />
+
+    <div [innerHtml]="cardMessage"></div>
+
+    <br />
+    <br />
+
+
+    <mf-person-card *ngFor="let person of personService.persons; index as i"
+        [(personName)] = "person.name"
+        [(personId)] = "person.id"
+        [(personAddress)] = "person.address"
+        [(personEmail)] = "person.email"
+        [(personGender)] = "person.gender"
+        [personBirthdate]="person.birthdate"
+        [personSalary]="person.salary"
+        (onModeChange)="onCardModeChanged($event, i)"
+        (onSaveClicked)="onSaveClicked()"
+        >
+    </mf-person-card>
+        
+    <div *ngIf="!personService.persons">No data</div>
+
+    <br />
+    <br />
+</div>

@@ -6,6 +6,8 @@
 @footer-height: 2.5em;
 @footer-with-border: @border-width + @footer-height + @border-width;
 
+@-webkit-line-clamp: 1;
+
 .title {
     font-size: 1.25em;
     font-weight: bold;
@@ -15,3 +17,17 @@
     width: @width-in-percent;
     display: inline-block;
 }
+
+.func-for-ellipsis (@-webkit-line-clamp : 1) {
+    text-overflow:ellipsis;
+    overflow: hidden;
+    display: -webkit-box !important;
+    -webkit-line-clamp: @-webkit-line-clamp;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+}
+
+    .clear-fix {
+        clear: both;
+    }
+    
